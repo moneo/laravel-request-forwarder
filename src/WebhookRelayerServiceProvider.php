@@ -18,7 +18,7 @@ class WebhookRelayerServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-webhook-relayer')
             ->hasConfigFile()
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
                     ->askToStarRepoOnGitHub('moneo/demopackage');
