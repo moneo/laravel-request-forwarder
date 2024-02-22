@@ -21,6 +21,7 @@ class WebhookRelayerMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $this->webhookRelayer->sendAsync($request);
+
         return $next($request);
     }
 }
