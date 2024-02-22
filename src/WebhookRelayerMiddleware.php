@@ -8,6 +8,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WebhookRelayerMiddleware
 {
+    public function __construct(
+        public readonly WebhookRelayer $webhookRelayer,
+    ) {
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -15,6 +20,7 @@ class WebhookRelayerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $this->webhookRelayer->sendAsync($request);
         return $next($request);
     }
 }

@@ -1,0 +1,13 @@
+<?php
+
+namespace Moneo\WebhookRelayer\Providers;
+
+use Illuminate\Http\Client\Factory;
+
+interface ProviderInterface
+{
+    public function __construct(Factory $client);
+
+    /** @return \Illuminate\Http\Client\Response */
+    public function send($url, $params, $webhook);
+}

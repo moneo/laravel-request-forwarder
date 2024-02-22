@@ -2,7 +2,7 @@
 
 namespace Moneo\WebhookRelayer;
 
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Illuminate\Http\Client\Factory;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,11 +17,20 @@ class WebhookRelayerServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-webhook-relayer')
-            ->hasConfigFile()
-            ->hasInstallCommand(function (InstallCommand $command) {
-                $command
-                    ->publishConfigFile()
-                    ->askToStarRepoOnGitHub('moneo/demopackage');
-            });
+            ->hasConfigFile();
+    }
+
+    public function registeringPackage()
+    {
+        $this->app->bind('laravel_webhook_relayer.client', function ($app): Factory {
+            return $app[Factory::class];
+        });
+
+        $this->app->singleton(WebhookRelayer::class, function ($app): WebhookRelayer {
+            return new WebhookRelayer(
+                $app->make('laravel_webhook_relayer.client'),
+                config('webhook-relayer.webhooks'),
+            );
+        });
     }
 }
