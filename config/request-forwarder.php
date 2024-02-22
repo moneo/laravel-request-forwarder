@@ -17,7 +17,7 @@ return [
                     'method' => 'POST',
                     'provider' => \Moneo\RequestForwarder\Providers\Discord::class,
                 ],
-            ]
+            ],
         ],
     ],
 ];

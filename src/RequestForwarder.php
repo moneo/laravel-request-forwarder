@@ -24,7 +24,7 @@ class RequestForwarder
     /**
      * @throws WebhookNameNotFoundException
      */
-    public function triggerHooks(string $url, array $params, string $webhookName = null): void
+    public function triggerHooks(string $url, array $params, ?string $webhookName = null): void
     {
         foreach ($this->getWebhookTargets($webhookName) as $webhook) {
             try {
@@ -42,9 +42,9 @@ class RequestForwarder
      */
     private function getWebhookInfo(?string $webhookName = null): array
     {
-        $webhookName =  $webhookName ?? config('request-forwarder.default_webhook_name');
+        $webhookName = $webhookName ?? config('request-forwarder.default_webhook_name');
 
-        return $this->webhooks[$webhookName] ?? throw new WebhookNameNotFoundException('Webhook name called ' . $webhookName . ' is not defined in the config file');
+        return $this->webhooks[$webhookName] ?? throw new WebhookNameNotFoundException('Webhook name called '.$webhookName.' is not defined in the config file');
     }
 
     /**
