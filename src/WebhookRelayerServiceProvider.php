@@ -16,7 +16,7 @@ class WebhookRelayerServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-webhook-relayer')
+            ->name('laravel-request-forwarder')
             ->hasConfigFile();
     }
 

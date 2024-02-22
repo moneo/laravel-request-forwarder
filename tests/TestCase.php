@@ -29,7 +29,7 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
         /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-webhook-relayer_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_laravel-request-forwarder_table.php.stub';
         $migration->up();
         */
     }

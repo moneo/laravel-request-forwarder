@@ -1,12 +1,12 @@
 {
-    "name": "moneo/laravel-webhook-relayer",
-    "description": "This is my package laravel-webhook-relayer",
+    "name": "moneo/laravel-request-forwarder",
+    "description": "This is my package laravel-request-forwarder",
     "keywords": [
         "moneo",
         "laravel",
-        "laravel-webhook-relayer"
+        "laravel-request-forwarder"
     ],
-    "homepage": "https://github.com/moneo/laravel-webhook-relayer",
+    "homepage": "https://github.com/moneo/laravel-request-forwarder",
     "license": "MIT",
     "authors": [
         {
@@ -46,7 +46,7 @@
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-laravel-webhook-relayer --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-request-forwarder --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
