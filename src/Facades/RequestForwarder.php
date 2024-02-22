@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Facade;
  */
 class RequestForwarder extends Facade
 {
-    protected static function getFacadeAccessor()
+    /**
+     * @return string
+     */
+    protected static function getFacadeAccessor(): string
     {
         return \Moneo\RequestForwarder\RequestForwarder::class;
     }
