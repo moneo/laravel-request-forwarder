@@ -32,5 +32,7 @@ class RequestForwarderServiceProvider extends PackageServiceProvider
                 config('request-forwarder.webhooks'),
             );
         });
+
+        app('router')->aliasMiddleware('request-forwarder', RequestForwarderMiddleware::class);
     }
 }
