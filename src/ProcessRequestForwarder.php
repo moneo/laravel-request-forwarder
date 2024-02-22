@@ -18,6 +18,7 @@ class ProcessRequestForwarder implements ShouldQueue
     public function __construct(
         public readonly string $url,
         public readonly array $params,
+        public readonly ?string $webhookName = null,
     ) {
     }
 
@@ -27,6 +28,6 @@ class ProcessRequestForwarder implements ShouldQueue
     public function handle(): void
     {
         $requestForwarder = app(RequestForwarder::class);
-        $requestForwarder->triggerHooks($this->url, $this->params);
+        $requestForwarder->triggerHooks($this->url, $this->params, $this->webhookName);
     }
 }

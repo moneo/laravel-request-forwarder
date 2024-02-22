@@ -18,9 +18,9 @@ class RequestForwarderMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ?string $name = null): Response
     {
-        $this->requestForwarder->sendAsync($request);
+        $this->requestForwarder->sendAsync($request, $name);
 
         return $next($request);
     }
