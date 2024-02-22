@@ -26,7 +26,7 @@ composer require moneo/laravel-request-forwarder
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-request-forwarder-config"
+php artisan vendor:publish --tag="request-forwarder-config"
 ```
 
 This is the contents of the published config file:
