@@ -1,6 +1,6 @@
 <?php
 
-namespace Moneo\WebhookRelayer;
+namespace Moneo\RequestForwarder;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class ProcessWebhookRelayer implements ShouldQueue
+class ProcessRequestForwarder implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class ProcessWebhookRelayer implements ShouldQueue
      */
     public function handle(): void
     {
-        $webhookRelayer = app(WebhookRelayer::class);
-        $webhookRelayer->triggerHooks($this->url, $this->params);
+        $requestForwarder = app(RequestForwarder::class);
+        $requestForwarder->triggerHooks($this->url, $this->params);
     }
 }

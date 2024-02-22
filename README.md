@@ -39,8 +39,8 @@ return [
 ## Usage
 
 ```php
-$webhookRelayer = new Moneo\WebhookRelayer();
-echo $webhookRelayer->echoPhrase('Hello, Moneo!');
+$requestForwarder = new Moneo\RequestForwarder();
+echo $requestForwarder->echoPhrase('Hello, Moneo!');
 ```
 
 ## Testing

@@ -1,6 +1,6 @@
 <?php
 
-namespace Moneo\WebhookRelayer\Providers;
+namespace Moneo\RequestForwarder\Providers;
 
 use Illuminate\Http\Client\Factory;
 

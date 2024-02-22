@@ -1,13 +1,13 @@
 <?php
 
-namespace Moneo\WebhookRelayer;
+namespace Moneo\RequestForwarder;
 
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Request;
-use Moneo\WebhookRelayer\Providers\DefaultProvider;
-use Moneo\WebhookRelayer\Providers\ProviderInterface;
+use Moneo\RequestForwarder\Providers\DefaultProvider;
+use Moneo\RequestForwarder\Providers\ProviderInterface;
 
-class WebhookRelayer
+class RequestForwarder
 {
     public function __construct(
         private readonly Factory $client,
@@ -17,7 +17,7 @@ class WebhookRelayer
 
     public function sendAsync(Request $request)
     {
-        ProcessWebhookRelayer::dispatch($request->url(), $request->toArray());
+        ProcessRequestForwarder::dispatch($request->url(), $request->toArray());
     }
 
     public function triggerHooks(string $url, array $params)

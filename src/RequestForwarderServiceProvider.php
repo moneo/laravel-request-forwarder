@@ -1,12 +1,12 @@
 <?php
 
-namespace Moneo\WebhookRelayer;
+namespace Moneo\RequestForwarder;
 
 use Illuminate\Http\Client\Factory;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class WebhookRelayerServiceProvider extends PackageServiceProvider
+class RequestForwarderServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -22,14 +22,14 @@ class WebhookRelayerServiceProvider extends PackageServiceProvider
 
     public function registeringPackage()
     {
-        $this->app->bind('laravel_webhook_relayer.client', function ($app): Factory {
+        $this->app->bind('laravel_request_forwarder.client', function ($app): Factory {
             return $app[Factory::class];
         });
 
-        $this->app->singleton(WebhookRelayer::class, function ($app): WebhookRelayer {
-            return new WebhookRelayer(
-                $app->make('laravel_webhook_relayer.client'),
-                config('webhook-relayer.webhooks'),
+        $this->app->singleton(RequestForwarder::class, function ($app): RequestForwarder {
+            return new RequestForwarder(
+                $app->make('laravel_request_forwarder.client'),
+                config('request-forwarder.webhooks'),
             );
         });
     }

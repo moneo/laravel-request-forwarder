@@ -1,15 +1,15 @@
 <?php
 
-namespace Moneo\WebhookRelayer;
+namespace Moneo\RequestForwarder;
 
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WebhookRelayerMiddleware
+class RequestForwarderMiddleware
 {
     public function __construct(
-        public readonly WebhookRelayer $webhookRelayer,
+        public readonly RequestForwarder $requestForwarder,
     ) {
     }
 
@@ -20,7 +20,7 @@ class WebhookRelayerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $this->webhookRelayer->sendAsync($request);
+        $this->requestForwarder->sendAsync($request);
 
         return $next($request);
     }

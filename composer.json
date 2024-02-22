@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Moneo\\WebhookRelayer\\": "src/"
+            "Moneo\\RequestForwarder\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Moneo\\WebhookRelayer\\Tests\\": "tests/",
+            "Moneo\\RequestForwarder\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -72,10 +72,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Moneo\\WebhookRelayer\\WebhookRelayerServiceProvider"
+                "Moneo\\RequestForwarder\\RequestForwarderServiceProvider"
             ],
             "aliases": {
-                "WebhookRelayer": "Moneo\\WebhookRelayer\\Facades\\WebhookRelayer"
+                "RequestForwarder": "Moneo\\RequestForwarder\\Facades\\RequestForwarder"
             }
         }
     },

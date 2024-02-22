@@ -1,9 +1,9 @@
 <?php
 
-namespace Moneo\WebhookRelayer\Tests;
+namespace Moneo\RequestForwarder\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Moneo\WebhookRelayer\WebhookRelayerServiceProvider;
+use Moneo\RequestForwarder\RequestForwarderServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Moneo\\WebhookRelayer\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Moneo\\RequestForwarder\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            WebhookRelayerServiceProvider::class,
+            RequestForwarderServiceProvider::class,
         ];
     }
 
