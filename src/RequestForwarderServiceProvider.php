@@ -10,7 +10,6 @@ class RequestForwarderServiceProvider extends PackageServiceProvider
 {
     /**
      * @param Package $package
-     * @return void
      */
     public function configurePackage(Package $package): void
     {
@@ -24,9 +23,6 @@ class RequestForwarderServiceProvider extends PackageServiceProvider
             ->hasConfigFile();
     }
 
-    /**
-     * @return void
-     */
     public function registeringPackage(): void
     {
         $this->app->bind('laravel_request_forwarder.client', function ($app): Factory {

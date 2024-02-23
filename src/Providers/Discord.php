@@ -17,7 +17,6 @@ class Discord implements ProviderInterface
      * @param $url
      * @param $params
      * @param $webhook
-     * @return PromiseInterface|Response
      * @throws \Exception
      */
     public function send($url, $params, $webhook): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response

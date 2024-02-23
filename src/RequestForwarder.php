@@ -17,7 +17,6 @@ class RequestForwarder
 
     /**
      * @param Request $request
-     * @return void
      */
     public function sendAsync(Request $request): void
     {
@@ -27,7 +26,6 @@ class RequestForwarder
     /**
      * @param string $url
      * @param array $params
-     * @return void
      */
     public function triggerHooks(string $url, array $params): void
     {
