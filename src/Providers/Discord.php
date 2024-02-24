@@ -19,7 +19,7 @@ class Discord implements ProviderInterface
      * @param $webhook
      * @throws \Exception
      */
-    public function send($url, $params, $webhook): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
+    public function send($url, $params, $webhook)
     {
         $content = $url.PHP_EOL;
         $content .= json_encode($params);
