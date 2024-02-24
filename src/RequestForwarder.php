@@ -15,18 +15,11 @@ class RequestForwarder
     ) {
     }
 
-    /**
-     * @param Request $request
-     */
     public function sendAsync(Request $request): void
     {
         ProcessRequestForwarder::dispatch($request->url(), $request->toArray());
     }
 
-    /**
-     * @param string $url
-     * @param array $params
-     */
     public function triggerHooks(string $url, array $params): void
     {
         foreach ($this->webhooks as $webhook) {

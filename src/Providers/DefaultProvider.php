@@ -14,12 +14,9 @@ class DefaultProvider implements ProviderInterface
     }
 
     /**
-     * @param $url
-     * @param $params
-     * @param $webhook
      * @throws \Exception
      */
-    public function send($url, $params, $webhook): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
+    public function send(string $url, array $params, array $webhook): Response
     {
         return $this->client
             ->send($webhook['method'] ?? 'POST', $webhook['url']);

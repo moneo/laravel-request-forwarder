@@ -8,9 +8,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class RequestForwarderServiceProvider extends PackageServiceProvider
 {
-    /**
-     * @param Package $package
-     */
     public function configurePackage(Package $package): void
     {
         /*

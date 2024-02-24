@@ -2,7 +2,6 @@
 
 namespace Moneo\RequestForwarder\Providers;
 
-use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Response;
 
@@ -14,12 +13,9 @@ class Discord implements ProviderInterface
     }
 
     /**
-     * @param $url
-     * @param $params
-     * @param $webhook
      * @throws \Exception
      */
-    public function send($url, $params, $webhook)
+    public function send(string $url, array $params, array $webhook): Response
     {
         $content = $url.PHP_EOL;
         $content .= json_encode($params);
