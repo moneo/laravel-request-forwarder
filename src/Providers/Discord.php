@@ -3,6 +3,7 @@
 namespace Moneo\RequestForwarder\Providers;
 
 use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\Response;
 
 class Discord implements ProviderInterface
 {
@@ -11,7 +12,10 @@ class Discord implements ProviderInterface
     ) {
     }
 
-    public function send($url, $params, $webhook)
+    /**
+     * @throws \Exception
+     */
+    public function send(string $url, array $params, array $webhook): Response
     {
         $content = $url.PHP_EOL;
         $content .= json_encode($params);
