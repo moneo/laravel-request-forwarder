@@ -2,7 +2,6 @@
 
 namespace Moneo\RequestForwarder\Providers;
 
-use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Client\Response;
 
