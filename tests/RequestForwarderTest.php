@@ -30,12 +30,12 @@ it('validates config file configuration is right', function () {
     $config = config('request-forwarder');
     expect($config['webhooks'])->toBeArray();
     foreach (array_keys($config['webhooks']) as $webhookGroupName) {
-        expect($webhookGroupName)->toBeString();
-        expect($config['webhooks'][$webhookGroupName])->toBeArray();
-        expect($config['webhooks'][$webhookGroupName]['targets'])->toBeArray();
+        expect($webhookGroupName)->toBeString()
+            ->and($config['webhooks'][$webhookGroupName])->toBeArray()
+            ->and($config['webhooks'][$webhookGroupName]['targets'])->toBeArray();
         foreach ($config['webhooks'][$webhookGroupName]['targets'] as $target) {
-            expect($target['url'])->toBeString();
-            expect($target['method'])->toBeString();
+            expect($target['url'])->toBeString()
+                ->and($target['method'])->toBeString();
             if (array_key_exists('provider', $target)) {
                 $provider = $target['provider'];
                 expect($provider)->toBeString();
