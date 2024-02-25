@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
-
 use Moneo\RequestForwarder\RequestForwarder;
+
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
@@ -48,7 +48,7 @@ it('validates config file configuration is right', function () {
 });
 
 it('test private getWebhookInfo method returns valid data in RequestForwarder.php', function () {
-    $requestForwarder  = app()->make(RequestForwarder::class);
+    $requestForwarder = app()->make(RequestForwarder::class);
     $method = new ReflectionMethod(RequestForwarder::class, 'getWebhookInfo');
     $method->setAccessible('public');
     $getWebhookInfoNullParameterReturnedData = $method->invoke($requestForwarder);
@@ -61,7 +61,7 @@ it('test private getWebhookInfo method returns valid data in RequestForwarder.ph
 });
 
 it('test getWebhookTargets method returns valid data in RequestForwarder.php', function () {
-    $requestForwarder  = app()->make(RequestForwarder::class);
+    $requestForwarder = app()->make(RequestForwarder::class);
     $method = new ReflectionMethod(RequestForwarder::class, 'getWebhookTargets');
     $method->setAccessible('public');
     $getWebhookTargetsReturnedData = $method->invoke($requestForwarder);
@@ -79,5 +79,3 @@ it('must throw WebhookGroupNameNotFoundException when use wrong webhook group na
 
     expect($testResponseData['exception'])->toBe(Moneo\RequestForwarder\Exceptions\WebhookGroupNameNotFoundException::class);
 });
-
-

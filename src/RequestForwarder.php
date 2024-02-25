@@ -42,7 +42,7 @@ class RequestForwarder
      */
     private function getWebhookInfo(?string $webhookGroupName = null): array
     {
-        if (null === $webhookGroupName || '' === trim($webhookGroupName)) {
+        if ($webhookGroupName === null || trim($webhookGroupName) === '') {
             $webhookGroupName = config('request-forwarder.default_webhook_group_name');
         }
 
@@ -51,6 +51,7 @@ class RequestForwarder
 
     /**
      * // todo: DTO for return type
+     *
      * @throws WebhookGroupNameNotFoundException
      */
     private function getWebhookTargets(?string $webhookGroupName = null): array
