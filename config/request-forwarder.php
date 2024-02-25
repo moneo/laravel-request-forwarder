@@ -2,8 +2,8 @@
 
 // config for Moneo/RequestForwarder
 return [
-    // decides which webhook to use if no webhook name is specified while use middleware
-    'default_webhook_name' => 'default',
+    // decides which webhook to use if no webhook group name is specified while use middleware
+    'default_webhook_group_name' => 'default',
 
     'webhooks' => [
         'default' => [

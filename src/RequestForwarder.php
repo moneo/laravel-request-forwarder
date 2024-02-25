@@ -4,7 +4,7 @@ namespace Moneo\RequestForwarder;
 
 use Illuminate\Http\Client\Factory;
 use Illuminate\Http\Request;
-use Moneo\RequestForwarder\Exceptions\WebhookNameNotFoundException;
+use Moneo\RequestForwarder\Exceptions\WebhookGroupNameNotFoundException;
 use Moneo\RequestForwarder\Providers\DefaultProvider;
 use Moneo\RequestForwarder\Providers\ProviderInterface;
 
@@ -16,17 +16,17 @@ class RequestForwarder
     ) {
     }
 
-    public function sendAsync(Request $request, ?string $webhookName = null): void
+    public function sendAsync(Request $request, ?string $webhookGroupName = null): void
     {
-        ProcessRequestForwarder::dispatch($request->url(), $request->toArray(), $webhookName);
+        ProcessRequestForwarder::dispatch($request->url(), $request->toArray(), $webhookGroupName);
     }
 
     /**
-     * @throws WebhookNameNotFoundException
+     * @throws WebhookGroupNameNotFoundException
      */
-    public function triggerHooks(string $url, array $params, ?string $webhookName = null): void
+    public function triggerHooks(string $url, array $params, ?string $webhookGroupName = null): void
     {
-        foreach ($this->getWebhookTargets($webhookName) as $webhook) {
+        foreach ($this->getWebhookTargets($webhookGroupName) as $webhook) {
             try {
                 /** @var ProviderInterface $provider */
                 $providerClass = $webhook['provider'] ?? DefaultProvider::class;
@@ -38,20 +38,23 @@ class RequestForwarder
     }
 
     /**
-     * @throws WebhookNameNotFoundException
+     * @throws WebhookGroupNameNotFoundException
      */
-    private function getWebhookInfo(?string $webhookName = null): array
+    private function getWebhookInfo(?string $webhookGroupName = null): array
     {
-        $webhookName = $webhookName ?? config('request-forwarder.default_webhook_name');
+        if (null === $webhookGroupName || '' === trim($webhookGroupName)) {
+            $webhookGroupName = config('request-forwarder.default_webhook_group_name');
+        }
 
-        return $this->webhooks[$webhookName] ?? throw new WebhookNameNotFoundException('Webhook name called '.$webhookName.' is not defined in the config file');
+        return $this->webhooks[$webhookGroupName] ?? throw new WebhookGroupNameNotFoundException('Webhook Group Name called '.$webhookGroupName.' is not defined in the config file');
     }
 
     /**
-     * @throws WebhookNameNotFoundException
+     * // todo: DTO for return type
+     * @throws WebhookGroupNameNotFoundException
      */
-    private function getWebhookTargets(?string $webhookName = null): array
+    private function getWebhookTargets(?string $webhookGroupName = null): array
     {
-        return $this->getWebhookInfo($webhookName)['targets'];
+        return $this->getWebhookInfo($webhookGroupName)['targets'];
     }
 }
