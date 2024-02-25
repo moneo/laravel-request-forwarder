@@ -2,7 +2,8 @@
 
 namespace Moneo\RequestForwarder\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Route;
+use Moneo\RequestForwarder\RequestForwarderMiddleware;
 use Moneo\RequestForwarder\RequestForwarderServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -12,9 +13,7 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Moneo\\RequestForwarder\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
+        $this->registerTestRoutes();
     }
 
     protected function getPackageProviders($app)
@@ -27,10 +26,17 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-request-forwarder_table.php.stub';
-        $migration->up();
-        */
+    protected function registerTestRoutes(): void
+    {
+        Route::middleware('api')->group(function () {
+            Route::any('/', fn () => 'No Middleware')
+                ->name('no-middleware');
+
+            Route::middleware(RequestForwarderMiddleware::class)
+                ->any('/middleware', fn () => 'With Middleware')
+                ->name('middleware');
+        });
     }
 }

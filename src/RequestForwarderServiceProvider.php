@@ -20,7 +20,7 @@ class RequestForwarderServiceProvider extends PackageServiceProvider
             ->hasConfigFile();
     }
 
-    public function registeringPackage()
+    public function registeringPackage(): void
     {
         $this->app->bind('laravel_request_forwarder.client', function ($app): Factory {
             return $app[Factory::class];

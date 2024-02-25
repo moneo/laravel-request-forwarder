@@ -3,11 +3,11 @@
 namespace Moneo\RequestForwarder\Providers;
 
 use Illuminate\Http\Client\Factory;
+use Illuminate\Http\Client\Response;
 
 interface ProviderInterface
 {
     public function __construct(Factory $client);
 
-    /** @return \Illuminate\Http\Client\Response */
-    public function send($url, $params, $webhook);
+    public function send(string $url, array $params, array $webhook): Response;
 }
