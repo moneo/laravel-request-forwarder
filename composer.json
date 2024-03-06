@@ -1,6 +1,7 @@
 {
     "name": "moneo/laravel-request-forwarder",
-    "description": "This is my package laravel-request-forwarder",
+    "description": "Laravel Request Forwarder allows you to forward incoming requests to another addresses.",
+    "version": "1.0.0",
     "keywords": [
         "moneo",
         "laravel",
