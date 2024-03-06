@@ -29,14 +29,40 @@ This is the contents of the published config file:
 
 ```php
 return [
+    // decides which webhook to use if no webhook group name is specified while use middleware
+    'default_webhook_group_name' => 'default',
+
+    'webhooks' => [
+        'default' => [
+            'targets' => [
+                [
+                    'url' => 'https://some-domain.com/webhook',
+                    'method' => 'POST',
+                ],
+                [
+                    'url' => 'https://discord.com/api/webhooks/1209955556656291860/LAaczT-Pg785d5OzBmi6ivx2Vl7wAoruOwcVnZpb2eE2x8tf7fMi6R7_sr0IV0WoK83S',
+                    'method' => 'POST',
+                    'provider' => \Moneo\RequestForwarder\Providers\Discord::class,
+                ],
+            ],
+        ],
+    ],
+
+    'queue_name' => '',
+
+    'queue_class' => Moneo\RequestForwarder\ProcessRequestForwarder::class,
 ];
 ```
 
 ## Usage
 
+Add middleware to your routes which will be forwarded
 ```php
-$requestForwarder = new Moneo\RequestForwarder();
-echo $requestForwarder->echoPhrase('Hello, Moneo!');
+Route::middleware('request-forwarder') // default group
+    ->get('/endpoint', fn () => 'Some Response');
+
+Route::middleware('request-forwarder:another-group-in-config') // customize targets with group name parameter
+    ->get('/endpoint', fn () => 'Some Response');
 ```
 
 ## Testing
@@ -60,6 +86,9 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Emre Dipi](https://github.com/emredipi)
+- [Mücahit Cücen](https://github.com/mcucen)
+- [Semih Keskin](https://github.com/semihkeskindev)
+- [Taha Çalışkan](https://github.com/Tahaknd)
 - [All Contributors](../../contributors)
 
 ## License
