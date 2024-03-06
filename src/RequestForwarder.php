@@ -18,7 +18,10 @@ class RequestForwarder
 
     public function sendAsync(Request $request, ?string $webhookGroupName = null): void
     {
-        ProcessRequestForwarder::dispatch($request->url(), $request->toArray(), $webhookGroupName);
+        /** @var ProcessRequestForwarder $queueClass */
+        $queueClass = config('request-forwarder.queue_class', ProcessRequestForwarder::class);
+        $queueClass::dispatch($request->url(), $request->toArray(), $webhookGroupName)
+            ->onQueue(config('request-forwarder.queue_name'));
     }
 
     /**

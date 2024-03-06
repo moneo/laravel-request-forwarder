@@ -20,4 +20,8 @@ return [
             ],
         ],
     ],
+
+    'queue_name' => '',
+
+    'queue_class' => Moneo\RequestForwarder\ProcessRequestForwarder::class,
 ];
