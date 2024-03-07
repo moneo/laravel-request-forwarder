@@ -2,7 +2,10 @@
 
 All notable changes to `laravel-request-forwarder` will be documented in this file.
 
-### 1.0.0
+## 1.1.0
 
-- Update readme
-- Add version tag
+- Added custom queue config
+
+## 1.0.0
+
+- initial release
