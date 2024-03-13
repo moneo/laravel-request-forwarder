@@ -11,6 +11,9 @@ Sometimes we need to redirect requests to our application to other addresses. Th
 
 In addition to sending to a single URL, you can also send to different destinations by typing a custom provider. In our package you can see an example that sends notifications to Discord!
 
+![](https://raw.githubusercontent.com/moneo/laravel-request-forwarder/main/workflow.png)
+
+
 ## Installation
 
 You can install the package via composer:
