@@ -16,9 +16,9 @@ class ProcessRequestForwarder implements ShouldQueue
      * Create a new job instance.
      */
     public function __construct(
-        public readonly string $url,
-        public readonly array $params,
-        public readonly ?string $webhookName = null,
+        public string $url,
+        public array $params,
+        public ?string $webhookName = null,
     ) {
     }
 

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class RequestForwarderMiddleware
 {
     public function __construct(
-        public readonly RequestForwarder $requestForwarder,
+        public RequestForwarder $requestForwarder,
     ) {
     }
 

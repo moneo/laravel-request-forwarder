@@ -8,7 +8,7 @@ use Illuminate\Http\Client\Response;
 class Discord implements ProviderInterface
 {
     public function __construct(
-        private readonly Factory $client,
+        private Factory $client,
     ) {
     }
 

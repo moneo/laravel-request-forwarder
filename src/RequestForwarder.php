@@ -11,8 +11,8 @@ use Moneo\RequestForwarder\Providers\ProviderInterface;
 class RequestForwarder
 {
     public function __construct(
-        private readonly Factory $client,
-        private readonly array $webhooks,
+        private Factory $client,
+        private array $webhooks,
     ) {
     }
 
