@@ -1,7 +1,7 @@
 {
     "name": "moneo/laravel-request-forwarder",
     "description": "Laravel Request Forwarder allows you to forward incoming requests to another addresses.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "keywords": [
         "moneo",
         "laravel",
