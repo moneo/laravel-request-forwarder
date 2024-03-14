@@ -1,7 +1,6 @@
 {
     "name": "moneo/laravel-request-forwarder",
     "description": "Laravel Request Forwarder allows you to forward incoming requests to another addresses.",
-    "version": "1.0.1",
     "keywords": [
         "moneo",
         "laravel",
@@ -20,13 +19,13 @@
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.8",
         "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "illuminate/contracts": "^10.0|^11.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^7.8",
+        "nunomaduro/collision": "^7.8|^8.0",
         "larastan/larastan": "^2.0.1",
-        "orchestra/testbench": "^8.8",
+        "orchestra/testbench": "^8.8|^9.0",
         "pestphp/pest": "^2.20",
         "pestphp/pest-plugin-arch": "^2.5",
         "pestphp/pest-plugin-laravel": "^2.0",
